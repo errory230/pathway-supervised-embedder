@@ -1,8 +1,8 @@
-# PathwaySupervisedEmbedder
+# Pathway Supervised Embedder
 
-**Pathway-supervised document embeddings for biomedical literature (KEGG-BGE)**
+**Pathway-supervised document embeddings for biomedical literature**
 
-Code for the paper *Pathway-supervised document embeddings for biological context* (under review).
+Code for the paper *Pathway-supervised document embeddings for biological context*.
 
 Biomedical papers that study the same biological process often use different words, and papers that share words may study different processes. We use the literature references of KEGG pathway maps as supervision: papers cited by the same pathway are treated as sharing a biological context. This repository contains
 
@@ -23,9 +23,7 @@ emb = model.encode(["<abstract 1>", "<abstract 2>"])   # L2-normalized, 768-d
 print(emb @ emb.T)                                        # cosine similarity
 ```
 
-Give the abstract only, without a query instruction (as in training). Seeds 1 and 2 are available with `revision="seed1"` / `revision="seed2"`.
-
-## Repository layout
+## File structure
 
 ```
 scripts/
@@ -82,7 +80,7 @@ data/splits/
 
 Pathways are split 70/15/15 at the pathway level, and no paper occurs in more than one split. The external sets written by `build_mesh.py` and `build_reactome.py` use the same format (test split only; MeSH uses the keys `level1`-`level4`).
 
-## Reproducing the paper
+## Examples
 
 The notebooks use a Google Drive folder `BASE` (default `MyDrive/kegg-bge`) with the benchmark in `BASE/data/splits/`; results are written next to it. Run them in order. The same steps from the command line:
 
